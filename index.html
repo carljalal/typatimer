@@ -91,6 +91,7 @@ wordDict.push("document.style.position = \"absolute\"")
 currentTime = 0;
 greenBackgoundTime = 0;
 redBackgroundTime = 0;
+timerId = 0;
 
 
 
@@ -101,14 +102,17 @@ questionsCompleted = [false,false,false,false]
 timerMethod = () => {
   currentTime++;
   for(i = 0; i < questionsCompleted.length; i++){
-    
+
   }
 
 }
 
 
+
+
 init = () => {
-  setInterval(timerMethod,10);
+  clearInterval(timerId);
+  timerId = setInterval(timerMethod,10);
 }
 
 
