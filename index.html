@@ -15,6 +15,12 @@ challenge4input = document.createElement("textarea");
 startButtonElement = document.createElement("button");
 startButtonElement.innerHTML = "init!"
 
+scoreCounterElement = document.createElement("div");
+scoreCounterElement.innerHTML = "0"
+
+
+currentScore = 0;
+
 
 document.body.append(startButtonElement);
 document.body.append(challenge1instruction);
@@ -26,6 +32,13 @@ document.body.append(challenge2input);
 document.body.append(challenge3input);
 document.body.append(challenge4input);
 
+
+
+
+challenge1instruction.style.wordWrap = "break-word"
+challenge2instruction.style.wordWrap = "break-word"
+challenge3instruction.style.wordWrap = "break-word"
+challenge4instruction.style.wordWrap = "break-word"
 
 
 challenge1instruction.style.position = "absolute"
@@ -78,9 +91,26 @@ challenge2input.style.width = "200px"
 challenge3input.style.width = "200px"
 challenge4input.style.width = "200px"
 
+challengeInputs = [];
+challengeInstructions = [];
 
 
-wordDict = {}
+
+challengeInputs.push(challenge1input);
+challengeInputs.push(challenge2input);
+challengeInputs.push(challenge3input);
+challengeInputs.push(challenge4input);
+
+
+
+challengeInstructions.push(challenge1instruction);
+challengeInstructions.push(challenge2instruction);
+challengeInstructions.push(challenge3instruction);
+challengeInstructions.push(challenge4instruction);
+
+
+
+wordDict = []
 
 
 wordDict.push("document.body.append(tempElement)")
@@ -98,13 +128,50 @@ timerId = 0;
 questionsCompleted = [false,false,false,false]
 
 
+randomInt = (max) => {
+  return Math.floor( Math.random()*max)
+}
+
+randomItem = (array) => {
+  return array[randomInt(array.length)];
+}
+
 
 timerMethod = () => {
   currentTime++;
   for(i = 0; i < questionsCompleted.length; i++){
-
+    if(questionsCompleted[i] == false){
+      challengeInstructions[i].style.top = "50px"
+      challengeInstructions[i].innerHTML = randomItem(wordDict);
+      questionsCompleted[i] = true;
+    }
   }
 
+  if(greenBackgoundTime > 0) greenBackgoundTime--;
+  if(redBackgroundTime > 0) redBackgroundTime--;
+  if(greenBackgoundTime == 1) document.body.style.backgroundColor = "white"; 
+  if(redBackgroundTime == 1) document.body.style.backgroundColor = "white"; 
+}
+
+
+
+
+for(i = 0; i < challengeInputs.length; i++){
+  challengeInputs[i].id = i;
+  challengeInstructions[i].id = i;
+    challengeInputs[i].addEventListener("keydown", (e) => {
+      if (e.key == "Enter"){
+        if(currentChallengeInstruction.innerHTML == currentChallengeInput.value){
+          currentChallengeInput.value = "";
+          currentQuestionCompleted == false;
+          document.body.style.backgroundColor = "green";
+          greenBackgoundTime = 30;
+          currentScore++;
+          scoreCounterElement.innerHTML = currentScore;
+        }
+        
+      }
+    });
 }
 
 
