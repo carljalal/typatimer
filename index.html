@@ -1,12 +1,120 @@
 <html>
 <body>
 <script>
-challenge1 = document.createElement("div");
-challenge2 = document.createElement("div");
-challenge3 = document.createElement("div");
-challenge4 = document.createElement("div");
-  testesttest
-  test test
+
+challenge1instruction = document.createElement("div");
+challenge2instruction = document.createElement("div");
+challenge3instruction = document.createElement("div");
+challenge4instruction = document.createElement("div");
+
+challenge1input = document.createElement("textarea");
+challenge2input = document.createElement("textarea");
+challenge3input = document.createElement("textarea");
+challenge4input = document.createElement("textarea");
+
+startButtonElement = document.createElement("button");
+startButtonElement.innerHTML = "init!"
+
+
+document.body.append(startButtonElement);
+document.body.append(challenge1instruction);
+document.body.append(challenge2instruction);
+document.body.append(challenge3instruction);
+document.body.append(challenge4instruction);
+document.body.append(challenge1input);
+document.body.append(challenge2input);
+document.body.append(challenge3input);
+document.body.append(challenge4input);
+
+
+
+challenge1instruction.style.position = "absolute"
+challenge2instruction.style.position = "absolute"
+challenge3instruction.style.position = "absolute"
+challenge4instruction.style.position = "absolute"
+
+challenge1instruction.style.top = "50px"
+challenge2instruction.style.top = "50px"
+challenge3instruction.style.top = "50px"
+challenge4instruction.style.top = "50px"
+
+
+challenge1instruction.style.left = "50px"
+challenge2instruction.style.left = "250px"
+challenge3instruction.style.left = "450px"
+challenge4instruction.style.left = "650px"
+
+
+challenge1instruction.style.width = "200px"
+challenge2instruction.style.width = "200px"
+challenge3instruction.style.width = "200px"
+challenge4instruction.style.width = "200px"
+
+
+
+
+
+
+
+challenge1input.style.position = "absolute"
+challenge2input.style.position = "absolute"
+challenge3input.style.position = "absolute"
+challenge4input.style.position = "absolute"
+
+challenge1input.style.top = "500px"
+challenge2input.style.top = "500px"
+challenge3input.style.top = "500px"
+challenge4input.style.top = "500px"
+
+
+challenge1input.style.left = "50px"
+challenge2input.style.left = "250px"
+challenge3input.style.left = "450px"
+challenge4input.style.left = "650px"
+
+
+challenge1input.style.width = "200px"
+challenge2input.style.width = "200px"
+challenge3input.style.width = "200px"
+challenge4input.style.width = "200px"
+
+
+
+wordDict = {}
+
+
+wordDict.push("document.body.append(tempElement)")
+wordDict.push("document.createElement(\"textarea\")")
+wordDict.push("document.style.position = \"absolute\"")
+
+
+currentTime = 0;
+greenBackgoundTime = 0;
+redBackgroundTime = 0;
+
+
+
+questionsCompleted = [false,false,false,false]
+
+
+
+timerMethod = () => {
+  currentTime++;
+  for(i = 0; i < questionsCompleted.length; i++){
+    
+  }
+
+}
+
+
+init = () => {
+  setInterval(timerMethod,10);
+}
+
+
+startButtonElement.onclick = init;
+
+
 </script>
 </body>
 </html>
