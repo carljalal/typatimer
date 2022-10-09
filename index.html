@@ -23,6 +23,9 @@ currentScore = 0;
 
 
 document.body.append(startButtonElement);
+
+document.body.append(scoreCounterElement);
+
 document.body.append(challenge1instruction);
 document.body.append(challenge2instruction);
 document.body.append(challenge3instruction);
@@ -53,17 +56,20 @@ challenge4instruction.style.top = "50px"
 
 
 challenge1instruction.style.left = "50px"
-challenge2instruction.style.left = "250px"
-challenge3instruction.style.left = "450px"
-challenge4instruction.style.left = "650px"
+challenge2instruction.style.left = "450px"
+challenge3instruction.style.left = "850px"
+challenge4instruction.style.left = "1250px"
 
 
-challenge1instruction.style.width = "200px"
-challenge2instruction.style.width = "200px"
-challenge3instruction.style.width = "200px"
-challenge4instruction.style.width = "200px"
+challenge1instruction.style.width = "350px"
+challenge2instruction.style.width = "350px"
+challenge3instruction.style.width = "350px"
+challenge4instruction.style.width = "350px"
 
-
+challenge1instruction.style.border = "solid"
+challenge2instruction.style.border = "solid"
+challenge3instruction.style.border = "solid"
+challenge4instruction.style.border = "solid"
 
 
 
@@ -81,15 +87,15 @@ challenge4input.style.top = "500px"
 
 
 challenge1input.style.left = "50px"
-challenge2input.style.left = "250px"
-challenge3input.style.left = "450px"
-challenge4input.style.left = "650px"
+challenge2input.style.left = "450px"
+challenge3input.style.left = "850px"
+challenge4input.style.left = "1250px"
 
 
-challenge1input.style.width = "200px"
-challenge2input.style.width = "200px"
-challenge3input.style.width = "200px"
-challenge4input.style.width = "200px"
+challenge1input.style.width = "350px"
+challenge2input.style.width = "350px"
+challenge3input.style.width = "350px"
+challenge4input.style.width = "350px"
 
 challengeInputs = [];
 challengeInstructions = [];
@@ -126,6 +132,8 @@ timerId = 0;
 
 
 questionsCompleted = [false,false,false,false]
+challengeTopPosition = [challenge2instruction.style.top,challenge2instruction.style.top,challenge3instruction.style.top,challenge4instruction.style.top]
+
 
 
 randomInt = (max) => {
@@ -147,6 +155,17 @@ timerMethod = () => {
     }
   }
 
+  for(i = 0; 0 < challengeInstructions.length; i++){
+    let thisChallengeInstruction = challengeInstructions[i];
+    let thisChallengeInput = challengeInputs[i];
+    let YPos = parseInt(thisChallengeInstruction.style.top.replace("px",""))+1;
+    let YPosString = YPos + "px";
+    if (YPos > 500) {
+      questionsCompleted[thisChallengeInput.id] = false;
+    }
+    thisChallengeInstruction.style.top  = YPosString;
+  }
+
   if(greenBackgoundTime > 0) greenBackgoundTime--;
   if(redBackgroundTime > 0) redBackgroundTime--;
   if(greenBackgoundTime == 1) document.body.style.backgroundColor = "white"; 
@@ -157,19 +176,24 @@ timerMethod = () => {
 
 
 for(i = 0; i < challengeInputs.length; i++){
-  challengeInputs[i].id = i;
-  challengeInstructions[i].id = i;
-    challengeInputs[i].addEventListener("keydown", (e) => {
+  let thisChallengeInput = challengeInputs[i];
+  let thischallengeInstruction = challengeInstructions[i];
+  thisChallengeInput.id = i;
+    thisChallengeInput.addEventListener("keydown", (e) => {
       if (e.key == "Enter"){
-        if(currentChallengeInstruction.innerHTML == currentChallengeInput.value){
-          currentChallengeInput.value = "";
-          currentQuestionCompleted == false;
+        if(thischallengeInstruction.innerHTML == thisChallengeInput.value){
+          setTimeout(() => {thisChallengeInput.value = "";},1);
+          questionsCompleted[thisChallengeInput.id] = false;
           document.body.style.backgroundColor = "green";
           greenBackgoundTime = 30;
           currentScore++;
           scoreCounterElement.innerHTML = currentScore;
         }
-        
+        else {
+          setTimeout(() => {thisChallengeInput.value = "";},1);
+          document.body.style.backgroundColor = "red";
+          redBackgroundTime = 30;
+        }
       }
     });
 }
