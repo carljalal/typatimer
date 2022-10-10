@@ -2,118 +2,9 @@
 <body>
 <script>
 
-challenge1instruction = document.createElement("div");
-challenge2instruction = document.createElement("div");
-challenge3instruction = document.createElement("div");
-challenge4instruction = document.createElement("div");
-
-challenge1input = document.createElement("textarea");
-challenge2input = document.createElement("textarea");
-challenge3input = document.createElement("textarea");
-challenge4input = document.createElement("textarea");
-
-startButtonElement = document.createElement("button");
-startButtonElement.innerHTML = "init!"
-
-scoreCounterElement = document.createElement("div");
-scoreCounterElement.innerHTML = "0"
-
-
-currentScore = 0;
-
-
-document.body.append(startButtonElement);
-
-document.body.append(scoreCounterElement);
-
-document.body.append(challenge1instruction);
-document.body.append(challenge2instruction);
-document.body.append(challenge3instruction);
-document.body.append(challenge4instruction);
-document.body.append(challenge1input);
-document.body.append(challenge2input);
-document.body.append(challenge3input);
-document.body.append(challenge4input);
-
-
-
-
-challenge1instruction.style.wordWrap = "break-word"
-challenge2instruction.style.wordWrap = "break-word"
-challenge3instruction.style.wordWrap = "break-word"
-challenge4instruction.style.wordWrap = "break-word"
-
-
-challenge1instruction.style.position = "absolute"
-challenge2instruction.style.position = "absolute"
-challenge3instruction.style.position = "absolute"
-challenge4instruction.style.position = "absolute"
-
-challenge1instruction.style.top = "50px"
-challenge2instruction.style.top = "50px"
-challenge3instruction.style.top = "50px"
-challenge4instruction.style.top = "50px"
-
-
-challenge1instruction.style.left = "50px"
-challenge2instruction.style.left = "450px"
-challenge3instruction.style.left = "850px"
-challenge4instruction.style.left = "1250px"
-
-
-challenge1instruction.style.width = "350px"
-challenge2instruction.style.width = "350px"
-challenge3instruction.style.width = "350px"
-challenge4instruction.style.width = "350px"
-
-challenge1instruction.style.border = "solid"
-challenge2instruction.style.border = "solid"
-challenge3instruction.style.border = "solid"
-challenge4instruction.style.border = "solid"
-
-
-
-
-
-challenge1input.style.position = "absolute"
-challenge2input.style.position = "absolute"
-challenge3input.style.position = "absolute"
-challenge4input.style.position = "absolute"
-
-challenge1input.style.top = "500px"
-challenge2input.style.top = "500px"
-challenge3input.style.top = "500px"
-challenge4input.style.top = "500px"
-
-
-challenge1input.style.left = "50px"
-challenge2input.style.left = "450px"
-challenge3input.style.left = "850px"
-challenge4input.style.left = "1250px"
-
-
-challenge1input.style.width = "350px"
-challenge2input.style.width = "350px"
-challenge3input.style.width = "350px"
-challenge4input.style.width = "350px"
-
-challengeInputs = [];
-challengeInstructions = [];
-
-
-
-challengeInputs.push(challenge1input);
-challengeInputs.push(challenge2input);
-challengeInputs.push(challenge3input);
-challengeInputs.push(challenge4input);
-
-
-
-challengeInstructions.push(challenge1instruction);
-challengeInstructions.push(challenge2instruction);
-challengeInstructions.push(challenge3instruction);
-challengeInstructions.push(challenge4instruction);
-
+numTextareas = 2;
+bottomHeight = "700px"
+bottomHeightInt = parseInt(bottomHeight.replace("px",""))
 
 
 wordDict = []
@@ -124,15 +15,143 @@ wordDict.push("document.createElement(\"textarea\")")
 wordDict.push("document.style.position = \"absolute\"")
 
 
+
+
+
+
+// style the webpage
+if(numTextareas >= 1) challenge1instruction = document.createElement("div");
+if(numTextareas >= 2) challenge2instruction = document.createElement("div");
+if(numTextareas >= 3) challenge3instruction = document.createElement("div");
+if(numTextareas >= 4) challenge4instruction = document.createElement("div");
+
+if(numTextareas >= 1) challenge1input = document.createElement("textarea");
+if(numTextareas >= 2) challenge2input = document.createElement("textarea");
+if(numTextareas >= 3) challenge3input = document.createElement("textarea");
+if(numTextareas >= 4) challenge4input = document.createElement("textarea");
+
+startButtonElement = document.createElement("button");
+startButtonElement.innerHTML = "init!"
+
+scoreCounterElement = document.createElement("div");
+scoreCounterElement.innerHTML = "0"
+
+
+if(numTextareas >= 1) challenge1instruction.style.userSelect = "none";
+if(numTextareas >= 2) challenge2instruction.style.userSelect = "none";
+if(numTextareas >= 3) challenge3instruction.style.userSelect = "none";
+if(numTextareas >= 4) challenge4instruction.style.userSelect = "none";
+
+
+
+currentScore = 0;
+
+
+document.body.append(startButtonElement);
+
+document.body.append(scoreCounterElement);
+
+if(numTextareas >= 1) document.body.append(challenge1instruction);
+if(numTextareas >= 2) document.body.append(challenge2instruction);
+if(numTextareas >= 3) document.body.append(challenge3instruction);
+if(numTextareas >= 4) document.body.append(challenge4instruction);
+if(numTextareas >= 1) document.body.append(challenge1input);
+if(numTextareas >= 2) document.body.append(challenge2input);
+if(numTextareas >= 3) document.body.append(challenge3input);
+if(numTextareas >= 4) document.body.append(challenge4input);
+
+
+
+
+if(numTextareas >= 1) challenge1instruction.style.wordWrap = "break-word"
+if(numTextareas >= 2) challenge2instruction.style.wordWrap = "break-word"
+if(numTextareas >= 3) challenge3instruction.style.wordWrap = "break-word"
+if(numTextareas >= 4) challenge4instruction.style.wordWrap = "break-word"
+
+
+if(numTextareas >= 1) challenge1instruction.style.position = "absolute"
+if(numTextareas >= 2) challenge2instruction.style.position = "absolute"
+if(numTextareas >= 3) challenge3instruction.style.position = "absolute"
+if(numTextareas >= 4) challenge4instruction.style.position = "absolute"
+
+if(numTextareas >= 1) challenge1instruction.style.top = "50px"
+if(numTextareas >= 2) challenge2instruction.style.top = "50px"
+if(numTextareas >= 3) challenge3instruction.style.top = "50px"
+if(numTextareas >= 4) challenge4instruction.style.top = "50px"
+
+
+if(numTextareas >= 1) challenge1instruction.style.left = "50px"
+if(numTextareas >= 2) challenge2instruction.style.left = "450px"
+if(numTextareas >= 3) challenge3instruction.style.left = "850px"
+if(numTextareas >= 4) challenge4instruction.style.left = "1250px"
+
+
+if(numTextareas >= 1) challenge1instruction.style.width = "350px"
+if(numTextareas >= 2) challenge2instruction.style.width = "350px"
+if(numTextareas >= 3) challenge3instruction.style.width = "350px"
+if(numTextareas >= 4) challenge4instruction.style.width = "350px"
+
+if(numTextareas >= 1) challenge1instruction.style.border = "solid"
+if(numTextareas >= 2) challenge2instruction.style.border = "solid"
+if(numTextareas >= 3) challenge3instruction.style.border = "solid"
+if(numTextareas >= 4) challenge4instruction.style.border = "solid"
+
+
+
+
+
+if(numTextareas >= 1) challenge1input.style.position = "absolute"
+if(numTextareas >= 2) challenge2input.style.position = "absolute"
+if(numTextareas >= 3) challenge3input.style.position = "absolute"
+if(numTextareas >= 4) challenge4input.style.position = "absolute"
+
+if(numTextareas >= 1) challenge1input.style.top = bottomHeight
+if(numTextareas >= 2) challenge2input.style.top = bottomHeight
+if(numTextareas >= 3) challenge3input.style.top = bottomHeight
+if(numTextareas >= 4) challenge4input.style.top = bottomHeight
+
+
+if(numTextareas >= 1) challenge1input.style.left = "50px"
+if(numTextareas >= 2) challenge2input.style.left = "450px"
+if(numTextareas >= 3) challenge3input.style.left = "850px"
+if(numTextareas >= 4) challenge4input.style.left = "1250px"
+
+
+if(numTextareas >= 1) challenge1input.style.width = "350px"
+if(numTextareas >= 2) challenge2input.style.width = "350px"
+if(numTextareas >= 3) challenge3input.style.width = "350px"
+if(numTextareas >= 4) challenge4input.style.width = "350px"
+
+challengeInputs = [];
+challengeInstructions = [];
+
+
+
+if(numTextareas >= 1) challengeInputs.push(challenge1input);
+if(numTextareas >= 2) challengeInputs.push(challenge2input);
+if(numTextareas >= 3) challengeInputs.push(challenge3input);
+if(numTextareas >= 4) challengeInputs.push(challenge4input);
+
+
+
+if(numTextareas >= 1) challengeInstructions.push(challenge1instruction);
+if(numTextareas >= 2) challengeInstructions.push(challenge2instruction);
+if(numTextareas >= 3) challengeInstructions.push(challenge3instruction);
+if(numTextareas >= 4) challengeInstructions.push(challenge4instruction);
+
+
+
 currentTime = 0;
 greenBackgoundTime = 0;
 redBackgroundTime = 0;
 timerId = 0;
 
 
-
-questionsCompleted = [false,false,false,false]
-challengeTopPosition = [challenge2instruction.style.top,challenge2instruction.style.top,challenge3instruction.style.top,challenge4instruction.style.top]
+// initialize questions completed
+questionsCompleted = []
+for(let i = 0; i < numTextareas; i++){
+    questionsCompleted.push(false);
+}
 
 
 
@@ -147,7 +166,7 @@ randomItem = (array) => {
 
 timerMethod = () => {
   currentTime++;
-  for(i = 0; i < questionsCompleted.length; i++){
+  for(let i = 0; i < questionsCompleted.length; i++){
     if(questionsCompleted[i] == false){
       challengeInstructions[i].style.top = "50px"
       challengeInstructions[i].innerHTML = randomItem(wordDict);
@@ -155,12 +174,12 @@ timerMethod = () => {
     }
   }
 
-  for(i = 0; 0 < challengeInstructions.length; i++){
+  for(let i = 0; i < challengeInstructions.length; i++){
     let thisChallengeInstruction = challengeInstructions[i];
     let thisChallengeInput = challengeInputs[i];
     let YPos = parseInt(thisChallengeInstruction.style.top.replace("px",""))+1;
     let YPosString = YPos + "px";
-    if (YPos > 500) {
+    if (YPos > bottomHeightInt) {
       questionsCompleted[thisChallengeInput.id] = false;
     }
     thisChallengeInstruction.style.top  = YPosString;
@@ -168,7 +187,9 @@ timerMethod = () => {
 
   if(greenBackgoundTime > 0) greenBackgoundTime--;
   if(redBackgroundTime > 0) redBackgroundTime--;
-  if(greenBackgoundTime == 1) document.body.style.backgroundColor = "white"; 
+  if(greenBackgoundTime == 1) {
+    document.body.style.backgroundColor = "white"; 
+  }
   if(redBackgroundTime == 1) document.body.style.backgroundColor = "white"; 
 }
 
@@ -203,7 +224,7 @@ for(i = 0; i < challengeInputs.length; i++){
 
 init = () => {
   clearInterval(timerId);
-  timerId = setInterval(timerMethod,10);
+  timerId = setInterval(timerMethod,30);
 }
 
 
